@@ -24,7 +24,6 @@
 
 // --- WIFI -------------------------------------------------------------------------------
 #define SERVER_ERR_LIMIT 5
-#define WLAN_PASS HOME_WIFI_PW // from HomeWifi.h
 #define WIFI_MAX_TRIES 12
 const char* ssid [] = { HOME_WIFI_AP_MAIN, HOME_WIFI_AP_ALT }; // I have more than one AP at home
 int wifi_status = WL_IDLE_STATUS;
@@ -62,7 +61,7 @@ void wifiConnect() {
   uint8_t connect_counter = 0;
   while (connect_counter < WIFI_MAX_TRIES) {
     Serial.print("Attempting to connect to "); Serial.println(ssid[ssid_idx]);
-    WiFi.begin(ssid[ssid_idx], WLAN_PASS);  // try to connect
+    WiFi.begin(ssid[ssid_idx], HOME_WIFI_PW);  // try to connect
     // delay to allow time for connection
     for (uint8_t i = 0; i < 10; i++) {
       //digitalWrite(WIFI_CONNECT_LED, HIGH);
